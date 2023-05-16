@@ -1,8 +1,7 @@
 import { useSession } from "next-auth/react";
 import React, {
-  FormEvent,
+  type FormEvent,
   useCallback,
-  useEffect,
   useLayoutEffect,
   useRef,
   useState,
@@ -89,7 +88,9 @@ const Form = () => {
       className="flex flex-col gap-2 border-b px-4 py-2"
     >
       <div className="flex gap-4"></div>
-      <ProfileImage src={session.data.user.image} />
+      {session.data.user.image && (
+        <ProfileImage src={session.data.user.image} />
+      )}
       <textarea
         ref={inputRef}
         style={{ height: 0 }}
